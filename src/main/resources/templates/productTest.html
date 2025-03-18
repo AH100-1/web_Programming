@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" id="productName" placeholder="name" value=""><br>
+    <input type="text" id="price" placeholder="price"/><br>
+    <input type="text" id="count" placeholder="count"/><br>
+    <input type="text" id="url1" placeholder="url"/><br>
+    <input type="text" id="kind" placeholder="kind"><br>
+    <button id="saveProduct">저장</button>
+</body>
+
+<script type="text/javascript">
+    $('#saveProduct').click( function () {
+        var price = $('#price').val();
+        var count = $('#count').val();
+        var productName = $('#productName').val();
+        var url1 = $('#url1').val();
+        var kind = $('#kind').val();
+        var url = "/productSave?name="+productName+"&price="+price+"&count="+count + "&url="+url1+"&kind="+kind;
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: {},
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
+</script>
+</html>

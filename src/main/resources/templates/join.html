@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/scripts.js"></script>
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+</head>
+<body>
+<div class="page-wrap">
+    <header class="site-header">
+        <nav class="site-nav">
+            <ul>
+                <li><a class="site-logo" href="/main" id="goto_main">clothes shop</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="page-main">
+        <div id="box">
+            <div id="main"></div>
+
+            <div id="loginform">
+                <h1>LOGIN</h1>
+                <input type="email" placeholder="Email"/><br>
+                <input type="password" placeholder="Password"/><br>
+                <button id="login_btn_move">LOGIN</button>
+            </div>
+
+            <div id="signupform">
+                <h1>SIGN UP</h1>
+                <input type="text" id="username" placeholder="Full Name" value=""><br>
+                <input type="text" id="loginId" placeholder="Id" value=""><br>
+                <input type="email" id="email" placeholder="Email" value=""><br>
+                <input type="password" id="password" placeholder="Password" value=""><br>
+                <input type="text" id="address" placeholder="Address" value=""><br>
+                <button id="loginButton">가입하기</button>
+            </div>
+
+            <div id="login_msg">Have an account?</div>
+            <div id="signup_msg">Don't have an account?</div>
+
+            <button id="login_btn">LOGIN</button>
+            <button id="signup_btn">SIGN UP</button>
+        </div>
+    </main>
+</div>
+    <script type="text/javascript">
+        $('#loginButton').click( function () {
+            var loginId = $('#loginId').val();
+            var password = $('#password').val();
+            var name = $('#username').val();
+            var email = $('#email').val();
+            var address = $('#address').val();
+            var url = "/joinPost?id="+loginId+"&password="+password + "&email=" + email + "&address=" + address + "&name=" + name + "&role=U";
+            $.ajax({
+                type: "GET",
+                url: url,
+                data: {},
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
